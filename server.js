@@ -1,6 +1,7 @@
 var express = require('express'),
   app = express(),
   port = process.env.PORT || 4000,
+  tungus = require('tungus'),
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   morgan = require('morgan'),
@@ -11,7 +12,8 @@ var express = require('express'),
 
   
 mongoose.Promise = global.Promise;
-mongoose.connect(config.database, { useNewUrlParser: true } ); 
+mongoose.connect('tingodb:///tmp')
+// mongoose.connect(config.database, { useNewUrlParser: true } ); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
